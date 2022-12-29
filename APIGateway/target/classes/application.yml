@@ -1,0 +1,32 @@
+server:
+  port: 3000
+  
+spring:
+  application:
+    name: APIgateway
+    
+  cloud:
+    gateway:
+      routes:
+      - id: ADMIN-SERVICE
+        uri:
+         lb://ADMIN-SERVICE
+        predicates:
+        - Path=/admin/**
+      - id: ORDER-SERVICE
+        uri:
+         lb://ORDER-SERVICE
+        predicates:
+        - Path=/order/**
+      - id: USER-SERVICE
+        uri:
+         lb://USER-SERVICE
+        predicates:
+        - Path=/user/**
+      - id: WASHER-SERVICE
+        uri:
+         lb://WASHER-SERVICE
+        predicates:
+        - Path=/washer/**
+      
+      
